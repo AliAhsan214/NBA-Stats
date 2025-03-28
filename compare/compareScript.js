@@ -272,3 +272,5 @@ document.addEventListener('DOMContentLoaded', function() {
         summaryDiv.innerHTML = summary;
     }
 });
+
+// https://cdn.nba.com/headshots/nba/latest/260x190/{id}.png
