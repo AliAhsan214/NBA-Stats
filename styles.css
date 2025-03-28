@@ -1,0 +1,208 @@
+:root {
+    --nba-blue: #17408B;
+    --nba-red: #C9082A;
+    --light-gray: #f4f4f4;
+    --dark-gray: #333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: var(--dark-gray);
+}
+
+header {
+    background: linear-gradient(135deg, var(--nba-blue), #0d2d66);
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin: 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0.5rem 1rem 0.5rem 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section-header {
+    color: var(--nba-blue);
+    margin: 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--nba-red);
+    display: flex;
+    align-items: center;
+}
+
+.section-header h2 {
+    margin-right: 1rem;
+}
+
+.refresh-btn {
+    background-color: var(--nba-blue);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background-color 0.3s ease;
+}
+
+.refresh-btn:hover {
+    background-color: #0d2d66;
+}
+
+#liveScores {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.game-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.teams-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
+.team-logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.5rem;
+    object-fit: contain;
+}
+
+.vs {
+    font-weight: bold;
+    color: var(--nba-red);
+}
+
+.team-name {
+    font-weight: bold;
+    text-align: center;
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--light-gray);
+    padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+}
+
+.score {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.game-status {
+    text-align: center;
+    font-style: italic;
+    color: var(--nba-blue);
+    font-weight: 600;
+    padding: 0.5rem;
+    border-top: 1px solid var(--light-gray);
+}
+
+.player-stats-section {
+    margin-top: 2rem;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #liveScores {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Placeholder for additional front page content */
+.placeholder-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.placeholder-title {
+    color: var(--nba-blue);
+    margin-bottom: 1rem;
+}

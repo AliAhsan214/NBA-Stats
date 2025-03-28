@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Stats</title>
+    <link rel="stylesheet" href="compareStyles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>NBA Data Tracker</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Live Scores</a></li>
+                    <li><a href="index.html#player-stats">Player Stats</a></li>
+                    <li><a href="#">Team Stats</a></li>
+                    <li><a href="#">Historical Data</a></li>
+                    <li><a href="compare.html">Compare NBA Players</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <h2 class="section-title">Compare NBA Players</h2>
+        
+        <div class="comparison-container">
+            <div class="search-container">
+                <div class="player-input">
+                    <label for="player1">First Player</label>
+                    <input type="text" id="player1" placeholder="Enter player name (e.g., LeBron James)">
+                </div>
+                
+                <div class="vs-text">VS</div>
+                
+                <div class="player-input">
+                    <label for="player2">Second Player</label>
+                    <input type="text" id="player2" placeholder="Enter player name (e.g., Stephen Curry)">
+                </div>
+                
+                <button id="compare-btn" class="compare-btn">Compare</button>
+            </div>
+            
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            
+            <div id="error-container"></div>
+            
+            <div id="comparison-results">
+                <div class="players-header">
+                    <div class="player-card" id="player1-header">
+                        <!-- Player 1 details will be inserted here -->
+                    </div>
+                    
+                    <div class="player-card" id="player2-header">
+                        <!-- Player 2 details will be inserted here -->
+                    </div>
+                </div>
+                
+                <table class="stats-comparison" id="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Statistic</th>
+                            <th id="player1-name-header">Player 1</th>
+                            <th id="player2-name-header">Player 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Stats will be inserted here -->
+                    </tbody>
+                </table>
+                
+                <div class="summary-section" id="comparison-summary">
+                    <h3 class="summary-title">Comparison Summary</h3>
+                    <div id="summary-content">
+                        <!-- Summary will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="compareScript.js"></script>
+</body>
+</html>

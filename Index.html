@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA stats website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1>NBA Data Tracker</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="live-scores-link">Live Scores</a></li>
+                    <li><a href="player-stats.html" id="player-stats-link">Player Stats</a></li>
+                    <li><a href="#">Team Stats</a></li>
+                    <li><a href="#">Historical Data</a></li>
+                    <li><a href="Compare%20Function/compare.html">Compare NBA Players</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="section-header">
+            <h2>Live Scores</h2>
+            <button class="refresh-btn" onclick="loadLiveScores()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/>
+                </svg>
+                Refresh
+            </button>
+        </div>
+        <div id="liveScores"></div>
+    
+        <div class="placeholder-section">
+            <h3 class="placeholder-title">Top Performers</h3>
+            <p>This section will display today's top performers.</p>
+        </div>
+        
+        <div class="placeholder-section">
+            <h3 class="placeholder-title">Upcoming Games</h3>
+            <p>This section will show the schedule for upcoming games.</p>
+        </div>
+    
+        <div class="player-stats-section">
+            <h2>Player Stats</h2>
+            <input type="text" id="playerName" placeholder="Enter Player Name">
+            <button onclick="loadPlayerStats()">Get Player Stats</button>
+            <div id="playerResults"></div>
+            <script src="script.js"></script>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+:root {
+    --nba-blue: #17408B;
+    --nba-red: #C9082A;
+    --light-gray: #f4f4f4;
+    --dark-gray: #333;
+    --stat-better: #4CAF50;
+    --stat-worse: #F44336;
+    --stat-equal: #FFC107;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, var(--nba-blue), #0d2d66);
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin: 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0.5rem 1rem 0.5rem 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section-title {
+    color: var(--nba-blue);
+    margin: 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--nba-red);
+    font-size: 1.8rem;
+}
+
+.comparison-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.player-input {
+    flex: 1;
+    min-width: 300px;
+}
+
+.player-input label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--nba-blue);
+}
+
+.player-input input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.player-input input:focus {
+    border-color: var(--nba-blue);
+    outline: none;
+}
+
+.vs-text {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    color: var(--nba-red);
+    align-self: center;
+}
+
+.compare-btn {
+    padding: 0.8rem 2rem;
+    background-color: var(--nba-blue);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+}
+
+.compare-btn:hover {
+    background-color: #0d2d66;
+}
+
+#comparison-results {
+    margin-top: 2rem;
+    
+}
+
+.players-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.player-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    max-width: 45%;
+}
+
+.player-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--nba-blue);
+    margin-bottom: 1rem;
+}
+
+.player-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--nba-blue);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.player-team {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+}
+
+.stats-comparison {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+}
+
+.stats-comparison th {
+    background-color: var(--nba-blue);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stats-comparison tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+.stats-comparison td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.stat-name {
+    font-weight: bold;
+    text-align: left !important;
+}
+
+.better {
+    font-weight: bold;
+    color: var(--stat-better);
+    position: relative;
+}
+
+.better::after {
+    content: "▲";
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.worse {
+    color: var(--stat-worse);
+    position: relative;
+}
+
+.worse::after {
+    content: "▼";
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.equal {
+    color: var(--stat-equal);
+}
+
+.radar-chart-container {
+    width: 100%;
+    height: 400px;
+    margin: 2rem 0;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--nba-blue);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.error-message {
+    color: var(--nba-red);
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(201, 8, 42, 0.1);
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.stat-difference-bar {
+    height: 4px;
+    background-color: #ddd;
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.difference-indicator {
+    position: absolute;
+    height: 100%;
+    top: 0;
+}
+
+.player1-better {
+    background-color: var(--stat-better);
+    left: 0;
+}
+
+.player2-better {
+    background-color: var(--stat-better);
+    right: 0;
+}
+
+.summary-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+}
+
+.summary-title {
+    font-size: 1.5rem;
+    color: var(--nba-blue);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .vs-text {
+        text-align: center;
+        margin: 1rem 0;
+    }
+    
+    .players-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .player-card {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+}
