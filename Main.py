@@ -64,7 +64,7 @@
 
 import pandas as pd
 from nba_api.stats.static import players
-from nba_api.stats.endpoints import playercareerstats, teamyearbyyearstats, leagueleaders, leaguedashplayerstats
+from nba_api.stats.endpoints import playercareerstats, teamyearbyyearstats, leagueleaders, leaguedashplayerstats, leaguedashteamstats
 from nba_api.live.nba.endpoints import scoreboard
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -322,6 +322,22 @@ def get_all_stats_leaders():
 # fieldgoal
 # threepoint
 # freethrow
+
+@app.route("/api/team_stats_leaders/ppg")
+def get_team_points_leaders():
+    team_stats = leaguedashteamstats.LeagueDashTeamStats(
+        season_type_all_star="Regular Season",
+        per_mode_detailed="PerGame"
+    )
+    df = team_stats.get_data_frames()[0].sort_values("PTS", ascending=False).head(5)
+    results = []
+    for _, row in df.iterrows():
+        results.append({
+            "team_name": row["TEAM_NAME"],
+            "team_id": row["TEAM_ID"],
+            "stat_value": f"{row["PTS"]:.1f}"
+        })
+    return jsonify(results)
 
 if __name__ == "__main__":
     app.run(debug=True)
