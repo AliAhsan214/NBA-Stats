@@ -339,5 +339,29 @@ def get_team_points_leaders():
         })
     return jsonify(results)
 
+
+
+
+@app.route("/api/team_stats_leaders/all")
+def get_all_team_stats_leaders():
+    def response_to_dict(response):
+        return response.get_json()
+
+    stats = {
+        'points': response_to_dict(get_team_points_leaders()),
+        # 'rebounds': response_to_dict(get_team_rebound_leaders()),
+        # 'assists': response_to_dict(get_team_assist_leaders()), 
+        # 'steals': response_to_dict(get_team_steal_leaders()),
+        # 'blocks': response_to_dict(get_team_block_leaders()),
+        # 'fieldgoal': response_to_dict(get_team_fg_percentage_leaders()),
+        # 'threepoint': response_to_dict(get_team_3p_percentage_leaders()),
+        # 'freethrow': response_to_dict(get_team_ft_percentage_leaders()),
+        # 'wins': response_to_dict(get_team_wins_leaders()),
+        # 'losses': response_to_dict(get_team_losses_leaders()),
+        # 'winpct': response_to_dict(get_team_win_pct_leaders())
+    }
+    
+    return jsonify(stats)
+
 if __name__ == "__main__":
     app.run(debug=True)
