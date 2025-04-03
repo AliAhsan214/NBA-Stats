@@ -3,16 +3,16 @@ function loadStatLeaders() {
 
     const categories = [
         { name: "Points", shortName: "PPG", endpoint: "/api/team_stats_leaders/ppg"},
-        // { name: "Rebounds", shortName: "RPG", endpoint: "/api/team_stats_leaders/rpg"},
-        // { name: "Assists", shortName: "APG", endpoint: "/api/team_stats_leaders/apg" },
-        // { name: "Steals", shortName: "SPG", endpoint: "/api/team_stats_leaders/spg" },
-        // { name: "Blocks", shortName: "BPG", endpoint: "/api/team_stats_leaders/bpg" },
-        // { name: "Field Goal %", shortName: "FG%", endpoint: "/api/team_stats_leaders/fgp" },
-        // { name: "3-Point %", shortName: "3P%", endpoint: "/api/team_stats_leaders/3pp" },
-        // { name: "Free Throw %", shortName: "FT%", endpoint: "/api/team_stats_leaders/ftp" },
-        // { name: "Wins", shortName: "W", endpoint: "/api/team_stats_leaders/wins" },
-        // { name: "Losses", shortName: "L", endpoint: "/api/team_stats_leaders/losses" },
-        // { name: "Win Percentage", shortName: "Win%", endpoint: "/api/team_stats_leaders/winpct" }
+        { name: "Rebounds", shortName: "RPG", endpoint: "/api/team_stats_leaders/rpg"},
+        { name: "Assists", shortName: "APG", endpoint: "/api/team_stats_leaders/apg" },
+        { name: "Steals", shortName: "SPG", endpoint: "/api/team_stats_leaders/spg" },
+        { name: "Blocks", shortName: "BPG", endpoint: "/api/team_stats_leaders/bpg" },
+        { name: "Field Goal %", shortName: "FG%", endpoint: "/api/team_stats_leaders/fgp" },
+        { name: "3-Point %", shortName: "3P%", endpoint: "/api/team_stats_leaders/3pp" },
+        { name: "Free Throw %", shortName: "FT%", endpoint: "/api/team_stats_leaders/ftp" },
+        { name: "Wins", shortName: "W", endpoint: "/api/team_stats_leaders/wins" },
+        { name: "Losses", shortName: "L", endpoint: "/api/team_stats_leaders/losses" },
+        { name: "Win Percentage", shortName: "Win%", endpoint: "/api/team_stats_leaders/winpct" }
     ];
 
     fetch("http://127.0.0.1:5000/api/team_stats_leaders/all")
