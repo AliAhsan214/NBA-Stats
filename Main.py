@@ -85,11 +85,11 @@ def init_db():
             password TEXT
         )
     """)
-    cursor.execute("INSERT INTO users (username, password) VALUES(username, password)")
+    ##cursor.execute("INSERT INTO users (username, password) VALUES(username, password)")
     conn.commit()
     conn.close()
 
-    ## init_db()
+init_db()
 def hash_with_salt(password):
     salt = bcrypt.gensalt()
     return bcrypt.hashpw(password.encode(), salt)
