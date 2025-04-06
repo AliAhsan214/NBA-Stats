@@ -15,7 +15,7 @@ function loadStatLeaders() {
         { name: "Win Percentage", shortName: "Win%", endpoint: "/api/team_stats_leaders/winpct" }
     ];
 
-    fetch("http://127.0.0.1:5000/api/team_stats_leaders/all")
+    fetch("https://nba-api-backend-production-7503.up.railway.app/api/team_stats_leaders/all")
         .then(response => response.json())
         .then(data => {
             renderStatLeaders(data, categories);

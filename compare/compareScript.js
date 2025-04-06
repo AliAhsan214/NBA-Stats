@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function fetchPlayerData(playerName) {
         try {
-            const response = await fetch(`http://127.0.0.1:5000/player/${playerName}`);
+            const response = await fetch(`https://nba-api-backend-production-7503.up.railway.app/player/${playerName}`);
             
             if (!response.ok) {
                 throw new Error(`Error fetching player data: ${response.status}`);

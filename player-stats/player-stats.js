@@ -12,7 +12,7 @@ function loadStatLeaders() {
         { name: "Free Throw %", shortName: "FT%", endpoint: "/api/stats_leaders/ftp" }
     ]
 
-    fetch("http://127.0.0.1:5000/api/stats_leaders/all")
+    fetch("https://nba-api-backend-production-7503.up.railway.app/api/stats_leaders/all")
         .then(response => response.json())
         .then(data => {
             renderStatLeaders(data, categories);

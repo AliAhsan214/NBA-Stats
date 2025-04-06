@@ -5,14 +5,14 @@ document.getElementById("player-stats-link").addEventListener("click", function(
 
 async function loadPlayerStats() {
     const name = document.getElementById("playerName").value;
-    const response = await fetch(`http://127.0.0.1:5000/player/${name}`);
+    const response = await fetch(`https://nba-api-backend-production-7503.up.railway.app/player/${name}`);
     const data = await response.json();
     displayResults(data, "playerResults");
 }
 
 async function loadLiveScores() {
     try {
-        const response = await fetch("http://127.0.0.1:5000/api/live_scores");
+        const response = await fetch("https://nba-api-backend-production-7503.up.railway.app/api/live_scores");
         const data = await response.json();
         displayLiveScores(data);
     } catch (error) {
