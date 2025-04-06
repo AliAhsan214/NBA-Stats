@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Login</title>
+</head>
+<body>
+
+<h2>Register</h2>
+<input type="text" id="register-username" placeholder="Username">
+<input type="password" id="register-password" placeholder= "Password">
+<button onclick = "register()"> Register</button>
+<p id="register-response"></p>
+
+<h2>Login</h2>
+<input type="text" id="Login-username" placeholder="Username">
+<input type="password" id="Login-password" placeholder= "Password">
+<button onclick = "Login()"> Log In</button>
+<p id="Login-response"></p>
+
+<script>
+    async function register() {
+        let username = document.getElementById("register-username").value;
+        let password = document.getElementById("register-password").value;
+
+        let response = await fetch("http://127.0.0.1:5000/register", {
+            method:"POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username,password })
+        })
+
+        let result = await response.json();
+        document.getElementById("register-response").innerText = result.message || result.error
+    }
+
+     async function Login() {
+        let username = document.getElementById("Login-username").value;
+        let password = document.getElementById("Login-password").value;
+
+        let response = await fetch("http://127.0.0.1:5000/login", {
+            method:"POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username,password })
+        })
+
+        let result = await response.json();
+        document.getElementById("Login-response").innerText = result.message || result.error
+    }
+    
+</script>
+</body>
+</html>

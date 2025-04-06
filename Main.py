@@ -68,10 +68,78 @@ from nba_api.stats.endpoints import playercareerstats, teamyearbyyearstats, leag
 from nba_api.live.nba.endpoints import scoreboard
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+import sqlite3
+import bcrypt
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/register": {"origins": "*"},r"/login": {"origins": "*"}})  # Allow all origins for /register
 
+##Login
+def init_db():
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE,
+            password TEXT
+        )
+    """)
+    ##cursor.execute("INSERT INTO users (username, password) VALUES(username, password)")
+    conn.commit()
+    conn.close()
+
+init_db()
+def hash_with_salt(password):
+    salt = bcrypt.gensalt()
+    return bcrypt.hashpw(password.encode(), salt)
+
+@app.route("/register", methods = ["POST"])
+def register():
+    if request.method == "OPTIONS":
+        return  '', 200
+    data=request.json
+    username = data["username"]
+    password = data["password"]
+
+    if not username or not password:
+        return jsonify({"error": " Username and Password"}), 400
+    hashed_password = hash_with_salt(password)
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    try:
+        cursor.execute("INSERT INTO users (username, password) VALUES (?,?)",(username, hashed_password))
+        conn.commit()
+        return jsonify({"message": "User registered succesfully!"})
+    except sqlite3.IntegrityError:
+        return jsonify({"error": "Username already exists"}), 400
+
+    finally:
+        conn.close()
+
+@app.route("/login", methods=["POST","OPTIONS"])
+def login():
+    if request.method == "OPTIONS":
+        return '', 200
+
+    data = request.json
+    username = data["username"]
+    password = data["password"].encode()
+
+    if not username or not password:
+        return jsonify({"error": "Missing username or password"}),400
+
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT password FROM users WHERE username=?", (username,))
+    user = cursor.fetchone()
+    conn.close()
+
+    if user and bcrypt.checkpw(password, user[0]):
+        return jsonify({"message": "Login Successful!"})
+    return jsonify({"error": "Invalid credentials"}), 401
+
+##other stuff
 @app.route("/player/<name>", methods=["GET"])
 def get_player_stats(name):
     player_dict = players.find_players_by_full_name(name)
@@ -335,7 +403,7 @@ def get_team_points_leaders():
         results.append({
             "team_name": row["TEAM_NAME"],
             "team_id": row["TEAM_ID"],
-            "stat_value": f"{row["PTS"]:.1f}"
+            "stat_value": f"{row['PTS']:.1f}"
         })
     return jsonify(results)
 
