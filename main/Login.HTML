@@ -45,8 +45,16 @@
 
         let result = await response.json();
         document.getElementById("Login-response").innerText = result.message || result.error
+        if (response.ok){
+            window.location.href = "index.html";
+        }
+        else {
+            alert("Not valid");
+        }
+            
+        
     }
-    
+
 </script>
 </body>
 </html>

@@ -72,8 +72,9 @@ import sqlite3
 import bcrypt
 
 app = Flask(__name__)
-CORS(app, resources={r"/register": {"origins": "*"},r"/login": {"origins": "*"}})  # Allow all origins for /register
+CORS(app)  # Allow all origins for /register
 
+##, resources={r"/register": {"origins": "*"},r"/login": {"origins": "*"}}
 ##Login
 def init_db():
     conn = sqlite3.connect("users.db")
